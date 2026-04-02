@@ -3,19 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TikTok TV Otimizado</title>
+    <title>TikTok TV</title>
     <style>
-        body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+        /* Tela preta de carregamento para não dar clarão branco na TV */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #000; 
+            color: #fff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            font-family: sans-serif;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
+    <div id="loader">Carregando TikTok...</div>
+
     <script>
-        // Esse comando ajuda a TV a focar no conteúdo e carregar menos lixo do site
-        // Redirecionando para a versão que exige menos processamento
+        // Redireciona direto para a versão de feed, que a LG TV processa melhor
+        // Sem o iframe, o site ganha permissão total de aceleração de hardware da TV
         window.location.href = "https://www.tiktok.com/foryou";
         
-        // Dica: Se a TV for antiga, o site sempre vai exigir o "OK" do controle
-        // para dar o primeiro Play no som.
+        // Dica técnica: O controle da LG (Setas) passará os vídeos 
+        // assim que o site carregar totalmente.
     </script>
 </body>
 </html>
