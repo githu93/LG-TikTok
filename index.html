@@ -3,68 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>TikTok TV</title>
-    <link rel="icon" type="image/x-icon" href="https://www.tiktok.com/favicon.ico">
+    <!-- O segredo do PNG no navegador -->
+    <link rel="icon" href="https://www.tiktok.com/favicon.ico">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; }
-        
-        /* O segredo para as letras ficarem grandes é o zoom no iframe */
-        #tiktok-frame { 
-            width: 80%; /* Ajusta a largura para não cortar */
-            height: 80%; 
-            border: none;
-            transform: scale(1.25); /* Aumenta o tamanho de tudo em 25% */
-            transform-origin: top left;
-            width: 80vw; /* Compensa o zoom para preencher a tela */
-            height: 80vh;
-        }
-
-        #loader { 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: white; font-family: sans-serif; text-align: center; z-index: 10;
-        }
+        body { margin: 0; background: #000; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
+        .loader { width: 50px; height: 50px; border: 5px solid #fff; border-bottom-color: #ff0050; border-radius: 50%; display: inline-block; animation: rotation 1s linear infinite; }
+        @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-
-    <div id="loader">
-        <img src="https://www.tiktok.com/favicon.ico" width="64">
-        <p>Carregando com suporte total...</p>
-    </div>
-
-    <!-- O link /explore costuma aceitar melhor a navegação do que o /foryou direto -->
-    <iframe id="tiktok-frame" src="https://www.tiktok.com/explore" allow="autoplay"></iframe>
+    <img src="https://www.tiktok.com/favicon.ico" width="80" style="margin-bottom: 20px;">
+    <div class="loader"></div>
+    <p>Otimizando suporte de controle...</p>
 
     <script>
-        const iframe = document.getElementById('tiktok-frame');
-        const loader = document.getElementById('loader');
-
-        iframe.onload = () => { 
-            loader.style.display = 'none';
-            // Tenta forçar o foco para que as setas funcionem em tudo
-            iframe.contentWindow.focus();
-        };
-
-        // SUPORTE DE NAVEGAÇÃO TOTAL (D-PAD)
-        document.addEventListener('keydown', function(e) {
-            // Se o usuário apertar as setas, nós simulamos a navegação de foco
-            switch(e.keyCode) {
-                case 39: // Seta Direita
-                    // Tenta pular para o próximo elemento clicável
-                    break; 
-                case 37: // Seta Esquerda
-                    // Volta o foco
-                    break;
-                case 40: // Seta para BAIXO
-                    iframe.contentWindow.scrollBy(0, 300); // Rolagem menor para ver tudo
-                    break;
-                case 38: // Seta para CIMA
-                    iframe.contentWindow.scrollBy(0, -300);
-                    break;
-                case 13: // Botão OK (Enter)
-                    // Confirma o clique no que estiver focado
-                    break;
-            }
-        });
+        // Redireciona para a versão de "Explore" que tem botões maiores e aceita melhor o foco do controle
+        // O tempo de 2 segundos é para garantir que a TV processe o ícone antes de sair da página
+        setTimeout(function() {
+            window.location.href = "https://www.tiktok.com/explore";
+        }, 2000);
     </script>
 </body>
 </html>
