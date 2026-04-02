@@ -2,22 +2,20 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TikTok TV Otimizado</title>
     <style>
         body { margin: 0; padding: 0; background: #000; overflow: hidden; }
-        /* Força o site a ocupar a tela toda sem barras de rolagem extras */
-        #tv-frame { width: 100vw; height: 100vh; border: none; }
     </style>
 </head>
 <body>
     <script>
-        // Usando a versão de TV ou forçando o User Agent (se possível)
-        // O link abaixo é mais leve para o processador da LG
-        window.location.href = "https://www.tiktok.com/foryou?lang=pt-BR";
+        // Esse comando ajuda a TV a focar no conteúdo e carregar menos lixo do site
+        // Redirecionando para a versão que exige menos processamento
+        window.location.href = "https://www.tiktok.com/foryou";
         
-        // Dica: Se você conseguir configurar no appinfo.json 
-        // para a TV se identificar como "Safari Mobile", o site carrega 10x mais rápido.
+        // Dica: Se a TV for antiga, o site sempre vai exigir o "OK" do controle
+        // para dar o primeiro Play no som.
     </script>
 </body>
 </html>
