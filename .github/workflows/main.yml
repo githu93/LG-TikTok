@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Permite rodar manualmente se quiser
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Atualizado para v4
 
       - name: Install webOS CLI
         run: |
@@ -22,13 +22,12 @@ jobs:
 
       - name: Package IPK
         run: |
-          # Cria a pasta de output se não existir
-          mkdir build
-          # Empacota a pasta raiz (onde estão seu index.html e appinfo.json)
+          mkdir -p build
+          # O comando 'webos-package' gera o ipk baseado no seu appinfo.json
           webos-package . -o build/
 
       - name: Upload IPK Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # Atualizado para v4 (Corrige o erro da imagem)
         with:
           name: tiktok-tv-app
           path: build/*.ipk
