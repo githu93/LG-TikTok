@@ -12,22 +12,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # Atualizado para v4
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
       - name: Install webOS CLI
-        run: |
-          mkdir -p $HOME/webos-cli
-          curl -L https://github.com/webos-tools/cli/releases/download/v1.12.4/webos-cli-1.12.4.tar.gz | tar -xz -C $HOME/webos-cli
-          echo "$HOME/webos-cli/bin" >> $GITHUB_PATH
+        run: npm install -g @webos-tools/cli
 
       - name: Package IPK
         run: |
           mkdir -p build
-          # O comando 'webos-package' gera o ipk baseado no seu appinfo.json
-          webos-package . -o build/
+          # O comando oficial agora é ares-package
+          ares-package . -o build/
 
       - name: Upload IPK Artifact
-        uses: actions/upload-artifact@v4 # Atualizado para v4 (Corrige o erro da imagem)
+        uses: actions/upload-artifact@v4
         with:
           name: tiktok-tv-app
           path: build/*.ipk
