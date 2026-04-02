@@ -1,0 +1,13 @@
+{
+    "id": "com.paulo.tiktok.custom",
+    "version": "1.0.0",
+    "vendor": "Paulo",
+    "type": "web",
+    "main": "index.html",
+    "title": "TikTok TV",
+    "icon": "icon.png",
+    "uiRevision": "2",
+    "cursor": "hidden",
+    "resolution": "1920x1080",
+    "handleSigterm": true
+}
