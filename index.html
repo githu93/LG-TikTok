@@ -2,26 +2,41 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>TikTok TV</title>
-    <!-- O segredo do PNG no navegador -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok TV Otimizado</title>
     <link rel="icon" href="https://www.tiktok.com/favicon.ico">
     <style>
-        body { margin: 0; background: #000; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; }
-        .loader { width: 50px; height: 50px; border: 5px solid #fff; border-bottom-color: #ff0050; border-radius: 50%; display: inline-block; animation: rotation 1s linear infinite; }
-        @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body { 
+            margin: 0; background: #000; color: white; 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; font-family: sans-serif; overflow: hidden;
+        }
+        /* Zoom para as letras ficarem grandes na TV */
+        html { zoom: 150%; } 
     </style>
 </head>
 <body>
-    <img src="https://www.tiktok.com/favicon.ico" width="80" style="margin-bottom: 20px;">
-    <div class="loader"></div>
-    <p>Otimizando suporte de controle...</p>
+    <div style="text-align: center;">
+        <img src="https://www.tiktok.com/favicon.ico" width="100">
+        <h1>A preparar suporte de comando...</h1>
+    </div>
 
     <script>
-        // Redireciona para a versão de "Explore" que tem botões maiores e aceita melhor o foco do controle
-        // O tempo de 2 segundos é para garantir que a TV processe o ícone antes de sair da página
+        // Redireciona para o Explore, que é mais fácil de navegar
         setTimeout(function() {
             window.location.href = "https://www.tiktok.com/explore";
-        }, 2000);
+        }, 1500);
+
+        // Suporte para o Comando (D-Pad)
+        document.addEventListener('keydown', function(e) {
+            // Este script ajuda a TV a focar nos botões "cinzas" que mencionaste
+            const active = document.activeElement;
+            if (e.keyCode === 40) { // Seta Baixo
+                window.scrollBy(0, 200);
+            } else if (e.keyCode === 38) { // Seta Cima
+                window.scrollBy(0, -200);
+            }
+        });
     </script>
 </body>
 </html>
