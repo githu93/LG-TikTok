@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background: #000; }
+        #tiktok-browser { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Carrega o TikTok direto -->
+    <iframe id="tiktok-browser" src="https://www.tiktok.com/foryou"></iframe>
+
+    <script>
+        // Detecta as teclas do controle remoto da LG
+        document.addEventListener('keydown', function(e) {
+            const iframe = document.getElementById('tiktok-browser');
+            
+            switch(e.keyCode) {
+                case 40: // Seta para BAIXO
+                    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+                    // Tenta forçar o scroll dentro do iframe se necessário
+                    iframe.contentWindow.postMessage('nextVideo', '*'); 
+                    break;
+                case 38: // Seta para CIMA
+                    window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+                    break;
+                case 13: // Botão Central (OK)
+                    // Simula um clique para dar Play/Pause
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
